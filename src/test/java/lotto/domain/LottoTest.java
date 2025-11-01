@@ -23,4 +23,33 @@ class LottoTest {
     }
 
     // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+    @DisplayName("getLottoFormatted 로또번호 배열숫자형 타입 toString 반환")
+    @Test
+    void 로또_toStirng으로_포맷팅() {
+        List<Integer> numbers = List.of(1,2,3,4,5,6);
+        Lotto lotto = new Lotto(numbers);
+        String method = lotto.getLottoFormatted();
+
+        assertThat(method).isEqualTo("[1, 2, 3, 4, 5, 6]");
+    }
+
+    @DisplayName("matchCount 당첨번호 매칭 개수 반환")
+    @Test
+    void 로또_당첨번호와_부여받은_로또번호_매칭_개수_반환() {
+        List<Integer> numbers = List.of(1,2,3,4,5,6);
+        Lotto lotto = new Lotto(numbers);
+        int matchCount = lotto.matchCount(List.of(2,5,9,11,30,40));
+        assertThat(matchCount).isEqualTo(2);
+    }
+
+    @DisplayName("hasNumber 로또 당첨번호에 보너스 번호 여부 반환")
+    @Test
+    void 번호_리스트에_번호_포함_여부_반환() {
+        Lotto lotto =new Lotto(List.of(1,2,3,4,5,6));
+        boolean hasNumber = lotto.hasNumber(2);
+        assertThat(hasNumber).isEqualTo(true);
+
+        boolean hasNotNumber = lotto.hasNumber(10);
+        assertThat(hasNotNumber).isEqualTo(false);
+    }
 }

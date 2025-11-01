@@ -20,4 +20,22 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
+    public String getLottoFormatted() {
+        return numbers.toString();
+    }
+
+    public int matchCount(List<Integer> winning) {
+        int count = 0;
+        for (int number : numbers) if (winning.contains(number)) count++;
+        return count;
+    }
+
+    public boolean hasNumber(int number) {
+        return numbers.contains(number);
+    }
+
+    //테스트코드용 메소드
+    public List<Integer> getNumbers() {
+        return numbers;
+    }
 }
